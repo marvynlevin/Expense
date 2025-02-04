@@ -14,12 +14,23 @@ struct RowView: View {
     var body: some View {
         HStack {
             Text(expense.title)
-            Text("\(expense.price) €")
+            // 2 valeurs après la virgule
+            Text(String(format: "%.2f €", expense.price))
             
-            Text(expense.stateTransaction)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-                .cornerRadius(20)
+            Spacer()
+            
+            Text(expense.category.rawValue)
+                .font(.footnote)
+                .padding(3)
+                .foregroundStyle(Color(.systemGray2))
+                .frame(width: 62)
+                .overlay(
+                Capsule()
+                    .stroke(Color(.systemGray2), lineWidth: 0.75)
+                )
         }
+        .font(.title2)
+        .padding(.vertical, 10)
     }
 }
 

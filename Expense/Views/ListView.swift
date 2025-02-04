@@ -9,15 +9,21 @@ import SwiftUI
 
 struct ListView: View {
     
-    var data: [Expense]
+    // var data: [Expense]
+    @EnvironmentObject var expenseVM:ExpenseViewModel
     
     var body: some View {
         
         NavigationView {
             List {
-                ForEach(data) {
+                ForEach(expenseVM.expenses) {
                     expense in RowView(expense: expense)
+                        .onTapGesture {
+                            self.expenseVM.updateExpense(expense: expense)
+                        }
                 }
+                .onDelete(perform: expenseVM.deleteExpense)
+                .onMove(perform: expenseVM.moveExpense)
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Expenses")
@@ -26,7 +32,7 @@ struct ListView: View {
                     EditButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink("Add", destination: AddExpenseView)
+                    NavigationLink("Add", destination: AddExpenseView())
                 }
             }
         }
@@ -34,6 +40,7 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView(data: Expense.testData)
+    ListView()
+        .environmentObject(ExpenseViewModel())
 }
 

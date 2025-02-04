@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A822E4A2D52013A00871E42 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A822E492D52013A00871E42 /* ExpenseViewModel.swift */; };
+		6A822E4C2D5205E700871E42 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A822E4B2D5205E700871E42 /* AddExpenseView.swift */; };
 		6AD251F32D48CB96004A81BD /* ExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD251F22D48CB96004A81BD /* ExpenseApp.swift */; };
 		6AD251F52D48CB96004A81BD /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD251F42D48CB96004A81BD /* ListView.swift */; };
 		6AD251F72D48CB97004A81BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AD251F62D48CB97004A81BD /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A822E492D52013A00871E42 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
+		6A822E4B2D5205E700871E42 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		6AD251EF2D48CB96004A81BD /* Expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD251F22D48CB96004A81BD /* ExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseApp.swift; sourceTree = "<group>"; };
 		6AD251F42D48CB96004A81BD /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			children = (
 				6AD251F42D48CB96004A81BD /* ListView.swift */,
 				6AD252052D48CE27004A81BD /* RowView.swift */,
+				6A822E4B2D5205E700871E42 /* AddExpenseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 		6AD252022D48CC31004A81BD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6A822E492D52013A00871E42 /* ExpenseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -170,6 +176,8 @@
 				6AD252042D48CC4F004A81BD /* Expense.swift in Sources */,
 				6AD251F52D48CB96004A81BD /* ListView.swift in Sources */,
 				6AD251F32D48CB96004A81BD /* ExpenseApp.swift in Sources */,
+				6A822E4C2D5205E700871E42 /* AddExpenseView.swift in Sources */,
+				6A822E4A2D52013A00871E42 /* ExpenseViewModel.swift in Sources */,
 				6AD252062D48CE27004A81BD /* RowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
