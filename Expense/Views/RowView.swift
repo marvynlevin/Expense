@@ -26,3 +26,4 @@ struct RowView: View {
 #Preview {
     RowView(expense: Expense.testData[0])
 }
+
