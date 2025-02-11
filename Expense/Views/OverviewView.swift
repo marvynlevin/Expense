@@ -52,5 +52,5 @@ struct OverviewView: View {
 
 #Preview {
     OverviewView()
-       //.environmentObject(ExpenseViewModel())
+       .environmentObject(ExpenseViewModel())
 }

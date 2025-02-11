@@ -40,5 +40,10 @@ class ExpenseViewModel: ObservableObject {
     func totalPrice() -> Float {
         return expenses.reduce(0) { $0 + $1.price}
     }
+    
+    func totalByCategory() -> [Category: Float] {
+        //TODO: A FINIR
+        return
+    }
 }
 
