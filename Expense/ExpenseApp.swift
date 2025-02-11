@@ -11,7 +11,10 @@ import SwiftUI
 struct ExpenseApp: App {
     var body: some Scene {
         WindowGroup {
+            // on utilise le TabView
             ContentView()
+                // et la class Expense
+                .environmentObject(ExpenseViewModel())
         }
     }
 }

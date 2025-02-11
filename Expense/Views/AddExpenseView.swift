@@ -14,7 +14,14 @@ struct AddExpenseView:View {
     
     @State private var expenseTitle: String = ""
     @State private var category: Category = .perso
-    @State private var priceString: String = "0.00"
+    @State private var priceString: String = ""
+    
+    // conversion d'une chaine en un float
+    private let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    } ()
     
     var body: some View {
         VStack {
@@ -29,10 +36,6 @@ struct AddExpenseView:View {
                 .frame(height: 55)
                 .background(Color(.systemGray4))
                 .cornerRadius(10)
-                .onChange(of: priceString, { newValue in
-                    if let priceFloat = Float(newValue) {
-                        price = priceFloat
-                    }})
             
             Picker("Category", selection: $category) {
                 ForEach(Category.allCases, id: \.self) {
@@ -44,12 +47,22 @@ struct AddExpenseView:View {
             Spacer()
             
             Button {
-                self.expenseVM.addExpense(expense: Expense(title: expenseTitle, price: price, category: category))
+                if let priceFloat = numberFormatter.number(from: priceString)?.floatValue {
+                    let expense = Expense(title: expenseTitle, price: priceFloat, category: category)
+                    expenseVM.addExpense(expense: expense)
+                    
+                    pm.wrappedValue.dismiss() // fermer la vue après clic
+                } else {
+                    print("invalid price")
+                }
+                
+                
             } label: {
                 Text("SAVE")
                     .foregroundStyle(.white)
                     .font(.headline)
-                    .frame(height: 55)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .frame(width: 300, height: 55)
                     .background(Color.accentColor)
                     .cornerRadius(10)
             }

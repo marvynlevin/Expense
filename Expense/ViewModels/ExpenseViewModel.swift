@@ -31,7 +31,14 @@ class ExpenseViewModel: ObservableObject {
         self.expenses.move(fromOffsets: from, toOffset: to)
     }
     
-    func updateExpense(expense: Expense) {
-        // TODO
+    func updateExpense(expense: Expense, category: Category) {
+        if let index = expenses.firstIndex(where: { $0.id == expense.id}) {
+            expenses[index].category = category
+        }
+    }
+    
+    func totalPrice() -> Float {
+        return expenses.reduce(0) { $0 + $1.price}
     }
 }
+

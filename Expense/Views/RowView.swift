@@ -14,20 +14,23 @@ struct RowView: View {
     var body: some View {
         HStack {
             Text(expense.title)
+            
+            Spacer()
+            
             // 2 valeurs après la virgule
             Text(String(format: "%.2f €", expense.price))
             
-            Spacer()
             
             Text(expense.category.rawValue)
                 .font(.footnote)
                 .padding(3)
-                .foregroundStyle(Color(.systemGray2))
+                // on récupère la couleur du enum Category
+                .foregroundStyle(expense.category.color)
                 .frame(width: 62)
                 .overlay(
                 Capsule()
-                    .stroke(Color(.systemGray2), lineWidth: 0.75)
-                )
+                    .stroke(expense.category.color, lineWidth: 0.75)
+            )
         }
         .font(.title2)
         .padding(.vertical, 10)
