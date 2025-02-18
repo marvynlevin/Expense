@@ -67,6 +67,7 @@ struct AddExpenseView:View {
                     .cornerRadius(10)
             }
         }
+        
         .padding(14)
         .navigationTitle("Add an expense")
     }

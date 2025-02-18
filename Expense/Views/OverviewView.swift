@@ -74,4 +74,3 @@ struct OverviewView: View {
         }
     }
 }
-

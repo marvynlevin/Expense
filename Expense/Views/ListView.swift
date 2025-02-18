@@ -69,4 +69,3 @@ struct ListView: View {
     ListView()
         .environmentObject(ExpenseViewModel())
 }
-

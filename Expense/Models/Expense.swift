@@ -44,4 +44,3 @@ struct Expense: Identifiable {
     ]
     
 }
-

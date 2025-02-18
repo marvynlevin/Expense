@@ -22,6 +22,7 @@ class ExpenseViewModel: ObservableObject {
          return categoryTotals
      }
     
+    
     init() {
         getExpenses()
     }
