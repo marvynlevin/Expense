@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct OverviewView: View {
+    
+    @EnvironmentObject var expenseVM: ExpenseViewModel
+    
     var body: some View {
-        NavigationView {
+        VStack {
+            
+            Spacer()
+            
             VStack {
                 HStack {
-                    //TODO: système de filtrage par date non réalisé (class non a jour et implémentation inconnu)
                     Text("Period start date")
-                    
                     Spacer()
-                    
                     Text("Sep 24, 2021")
                         .foregroundColor(Color(.systemBlue))
                         .padding(10)
@@ -26,9 +29,7 @@ struct OverviewView: View {
                 
                 HStack {
                     Text("Period end date")
-                    
                     Spacer()
-                    
                     Text("Sep 27, 2021")
                         .foregroundColor(Color(.systemBlue))
                         .padding(10)
@@ -39,18 +40,38 @@ struct OverviewView: View {
             .padding(20)
             
             Spacer()
+                    
+            // affichage des totaux par catégorie dans un VStack
+            VStack(spacing: 20) {
+                // itérer sur le total par catégorie
+                ForEach(expenseVM.totalByCategory.sorted { $0.key.rawValue < $1.key.rawValue }, id: \.key) { category, total in
+                    HStack {
+                        Text(category.rawValue)  // affiche le nom de la catégorie
+                            .font(.headline)
+                            .padding(3)
+                            // on récupère la couleur du enum Category
+                            .foregroundStyle(category.color)
+                            .frame(width: 100)
+                            .overlay(
+                                Capsule()
+                                    .stroke(category.color, lineWidth: 0.75)
+                            )
+                        
+                            Spacer()
+                        
+                        // Affiche le total
+                        Text(String(format: "$%.2f €", total))
+                            .foregroundColor(category.color)
+                            .font(.headline)
+                    }
+                    .padding(5)
+                    .cornerRadius(8)
+                }
+            }
+            .padding()
             
-            
-            
-            
+            Spacer()
         }
-        .navigationTitle("Overview")
-        
     }
 }
 
-
-#Preview {
-    OverviewView()
-       .environmentObject(ExpenseViewModel())
-}

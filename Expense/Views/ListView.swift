@@ -15,7 +15,6 @@ struct ListView: View {
     let categories: [Category] = Category.allCases
     
     var body: some View {
-        
         NavigationView {
             VStack {
                 List {
@@ -35,14 +34,14 @@ struct ListView: View {
                     .onMove(perform: expenseVM.moveExpense)
                 }
                 .listStyle(PlainListStyle())
-            
+                
                 HStack {
                     Text("Total")
-                       .font(.title2)
-                       .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                
+                        .font(.title2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
                     Spacer()
-                
+                    
                     Text(String(format: "$%.2f €", expenseVM.totalPrice()))
                         .font(.title2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -50,7 +49,7 @@ struct ListView: View {
                 .padding()
                 .background(Color(.systemGray6))
             }
-        
+            
             .navigationTitle("Expenses")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

@@ -8,8 +8,19 @@
 import Foundation
 
 class ExpenseViewModel: ObservableObject {
-    
     @Published var expenses: [Expense] = []
+    
+    var totalByCategory: [Category: Float] {
+         var categoryTotals: [Category: Float] = [:]
+         for expense in expenses {
+             categoryTotals[expense.category, default: 0] += expense.price
+         }
+         
+         // TODO: Affichage des totaux calculés
+         print("Total by Category: \(categoryTotals)")
+         
+         return categoryTotals
+     }
     
     init() {
         getExpenses()
@@ -39,11 +50,6 @@ class ExpenseViewModel: ObservableObject {
     
     func totalPrice() -> Float {
         return expenses.reduce(0) { $0 + $1.price}
-    }
-    
-    func totalByCategory() -> [Category: Float] {
-        //TODO: A FINIR
-        return
     }
 }
 
